@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_ssl import *
 from logging.handlers import RotatingFileHandler
 from logging import Formatter
 import logging
@@ -18,11 +17,12 @@ if DEBUG:
 
 	@app.route('/log')
 	def info_page():
-		return f'{log_stream}' 
+		return f'{log_stream}'
 
+
+@app.route('/api/processImage')
+def image_process():
+	pass
+	
 if __name__ == '__main__':
-	# if ENABLE_HTTPS:
-	# 	generator.SSLGenerator.generate_cert()
-	# 	app.run(host=HOST, port=PORT, debug=DEBUG, ssl_context=(CERT_FILE, KEY_FILE))
-	# else:
 	app.run(host=HOST, port=PORT, debug=DEBUG)
